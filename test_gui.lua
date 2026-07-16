@@ -13,14 +13,12 @@ end
 
 -- --- 1. ПОИСК ПОДХОДЯЩЕГО РОДИТЕЛЯ ---
 local function FindParent()
-    -- Список возможных родителей
     local candidates = {
         CoreGui,
         LocalPlayer:FindFirstChild("PlayerGui"),
         game:GetService("StarterGui"),
         LocalPlayer:WaitForChild("PlayerGui", 0.5)
     }
-    
     for _, parent in ipairs(candidates) do
         if parent and parent:IsA("Instance") then
             return parent
@@ -48,7 +46,6 @@ local function Reattach()
         ScreenGui.Parent = parent
     end
 end
-
 game:GetService("RunService").Stepped:Connect(Reattach)
 
 -- --- 3. ГЛАВНОЕ ОКНО ---
@@ -62,7 +59,6 @@ MainFrame.BackgroundTransparency = 0.1
 MainFrame.BorderSizePixel = 0
 MainFrame.ClipsDescendants = true
 
--- Скругление
 local Corner = Instance.new("UICorner")
 Corner.Parent = MainFrame
 Corner.CornerRadius = UDim.new(0, 10)
@@ -87,7 +83,6 @@ TitleText.Font = Enum.Font.GothamBold
 TitleText.TextXAlignment = Enum.TextXAlignment.Left
 TitleText.BackgroundTransparency = 1
 
--- Кнопка закрытия
 local CloseBtn = Instance.new("TextButton")
 CloseBtn.Name = "CloseBtn"
 CloseBtn.Parent = TitleBar
@@ -110,7 +105,6 @@ Content.Size = UDim2.new(1, -20, 1, -55)
 Content.Position = UDim2.new(0, 10, 0, 45)
 Content.BackgroundTransparency = 1
 
--- Информация
 local InfoLabel = Instance.new("TextLabel")
 InfoLabel.Name = "InfoLabel"
 InfoLabel.Parent = Content
@@ -123,7 +117,6 @@ InfoLabel.Font = Enum.Font.Gotham
 InfoLabel.TextXAlignment = Enum.TextXAlignment.Left
 InfoLabel.BackgroundTransparency = 1
 
--- Кнопка теста
 local TestBtn = Instance.new("TextButton")
 TestBtn.Name = "TestBtn"
 TestBtn.Parent = Content
@@ -148,7 +141,6 @@ TestBtn.MouseButton1Click:Connect(function()
     TestBtn.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
 end)
 
--- Статус
 local StatusLabel = Instance.new("TextLabel")
 StatusLabel.Name = "StatusLabel"
 StatusLabel.Parent = Content
@@ -191,7 +183,6 @@ UserInputService.InputEnded:Connect(function(input)
     end
 end)
 
--- --- 7. ВЫВОД В КОНСОЛЬ ---
 print("============================================")
 print("✅ GUI успешно создан и отображается!")
 print("📍 Родитель: " .. parent.Name)
