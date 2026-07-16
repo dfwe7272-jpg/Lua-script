@@ -1,1 +1,14 @@
-
+{
+  "FREE-2024": {
+    "tier": "free",
+    "expires": "2024-12-31"
+  },
+  "PREMIUM-2025": {
+    "tier": "premium",
+    "expires": "2025-12-31"
+  },
+  "ADMIN-666": {
+    "tier": "admin",
+    "expires": "never"
+  }
+}
